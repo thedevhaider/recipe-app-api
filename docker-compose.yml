@@ -1,12 +1,13 @@
 version: "3"
 
-services:
-  app:
+services: # Services to run in Docker Container
+  app: # Application to run in Docker
     build:
-      context: .
+      context: . # Context of the Application '.' means current directory
     ports:
-      - "8000:8000"
+      - "8000:8000" # Mapping 8000 port of local to the 8000 port of Docker
     volumes:
-      - ./app:/app
+      - ./app:/app # Watching changes in ./app of local to reflect in Docker 
     command: >
+      # Running shell command in Docker to start server
       sh -c "python manage.py runserver 0.0.0.0:8000"

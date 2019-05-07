@@ -1,12 +1,17 @@
+# Selecting language to use for testing in Travis
 language: python
 
+# Using python version in Travis
 python: 
   - "3.6"
 
+# Starting Docker service on Travis
 services:
   - docker
 
+# Script to install docker-compose first before using it
 before_script: pip install docker-compose
 
+# Command to run Tests in Docker Container
 script:
   - docker-compose run app sh -c "python manage.py test && flake8"
