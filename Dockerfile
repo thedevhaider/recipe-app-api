@@ -13,7 +13,9 @@ COPY ./requirements.txt /requirements.txt
 RUN apk add --update --no-cache postgresql-client
 
 # Installing dependencies for psycopg2 (Postgres client)
-RUN apk add --update --no-cache --virtual .tmp-build-dps \
+# Set the alias using --virtual to delete the dependencies after use. 
+# .tmp-build-dps is the alias to del dependecies
+RUN apk add --update --no-cache --virtual .tmp-build-dps \ 
     gcc libc-dev linux-headers postgresql-dev
 
 # Installing req in Container
